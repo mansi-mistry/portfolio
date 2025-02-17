@@ -1,0 +1,266 @@
+/* global styles */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Manrope", sans-serif;
+    font-weight: 350; 
+    font-style: normal;
+    font-size: 14px;
+    background-color: #FFFFFF;
+    color: #2B2111;
+}
+
+/* navbar Styles */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 10%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+    position: fixed;
+    background-color: white;
+}
+
+.nav-left {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    margin-left: -40px;
+}
+
+.nav-left li {
+    margin-right: 20px;
+}
+
+.nav-left a {
+    color: #2B2111;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+
+/* body styles */
+
+.content {
+    margin-top: 80px;
+    text-align: center;
+    padding: 50px 10%;
+}
+
+h1 {
+    font-family: "Italiana", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    color: #594B02;
+}
+
+h2 {
+    font-family: "Manrope", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 24px;
+    color: #2B2111;
+}
+
+.italiana-regular {
+    font-family: "Italiana", serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.manrope {
+    font-family: "Manrope", sans-serif;
+    font-size: 15px;
+    font-weight: 200;
+    font-style: normal;
+    color: #2B2111;
+}
+
+.nav-right {
+    color: black;
+    text-decoration: none;
+    font-weight: 700; 
+    color: #2B2111;
+}
+
+a {
+  color: #594B02; 
+  text-decoration: none; 
+}
+
+a:hover {
+  color: #2B2111; 
+  text-decoration: underline; 
+}
+
+
+/* home Page */
+
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80vh;
+    padding: 0 10%;
+}
+
+.home-name {
+    font-family: "Italiana", serif;
+    font-size: 7rem; 
+    text-decoration: inherit;
+    color: #2B2111;
+    margin-right: -30%; 
+    z-index: 2; 
+    white-space: nowrap;
+    position: absolute;
+    top: 30%;
+}
+
+.home-image {
+    width: 50vw;
+    height: auto;
+    max-width: 100%;
+}
+
+.overlap-text {
+    color: floralwhite;
+}
+
+/* about Section */
+
+.grid-section {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+/* work */
+
+#projects {
+  margin-top: 80px; 
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+
+#projects img {
+  position: relative;
+  width: auto;
+  height: 350px;
+  border: 0.5px solid #000000;
+  border-radius: 15px;
+}
+
+
+/* testimonials */
+
+.testimonials-heading {
+    text-align: center;  
+    margin-bottom: 55px; 
+}
+
+#testimonials {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 40px;
+}
+
+.testimonial {
+    width: 100%;  
+    height: 325px;
+    background: #2B2111;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: floralwhite;
+    padding: 20px;
+    margin-bottom: 20px;
+    flex-direction: column; 
+    justify-content: flex-start; 
+}
+
+.testimonial p {
+    margin-top: 10px; 
+}
+
+.testimonial:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .testimonial {
+        height: auto; 
+        padding: 40px;
+        margin-bottom: 30px; 
+    }
+}
+
+
+/* footer */
+
+footer {
+  width: 100%;
+  background-color: #2B2111;
+  color: floralwhite; 
+  padding: 30px 10%; 
+  margin-top: 50px;
+  position: relative; 
+  bottom: 0; 
+  text-align: right; 
+  font-size: 14px; 
+}
+
+/* blog */
+
+#blog {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 80px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.column img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 0.5px solid #2B2111;
+}
+
+.image-container {
+    padding: 1%; 
+}
+
+.image-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.image-row img {
+    flex: 1; 
+    max-width: 33%; 
+    height: auto; 
+    border-radius: 10px;
+    border: 0.5px solid #2B2111;
+}
+
+.blog-image {
+    border-radius: 10px; 
+    border: 0.5px solid #2B2111;
+    margin-top: 20px;
+    
+}
+
