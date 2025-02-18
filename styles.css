@@ -227,6 +227,12 @@ footer {
     margin-top: 80px;
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
 .blog-image {
     border-radius: 10px; 
     border: 0.5px solid #2B2111;
