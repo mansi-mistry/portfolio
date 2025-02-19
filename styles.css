@@ -115,7 +115,7 @@ a:hover {
 
 .home-name {
     font-family: "Italiana", serif;
-    font-size: 7rem; 
+    font-size: clamp(5rem, 10vw, 7rem);
     text-decoration: inherit;
     color: #2B2111;
     margin-right: -30%; 
