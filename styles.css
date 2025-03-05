@@ -102,7 +102,6 @@ a:hover {
   text-decoration: underline; 
 }
 
-
 /* home Page */
 
 .home-container {
@@ -115,7 +114,6 @@ a:hover {
 
 .home-name {
     font-family: "Italiana", serif;
-    font-size: clamp(5rem, 10vw, 7rem);
     text-decoration: inherit;
     color: #2B2111;
     margin-right: -30%; 
@@ -123,6 +121,18 @@ a:hover {
     white-space: nowrap;
     position: absolute;
     top: 30%;
+}
+
+@media (min-width: 769px) {
+    .home-name {
+        font-size: 7rem; /* desktop */
+    }
+}
+
+@media (max-width: 768px) {
+    .home-name {
+        font-size: 2.7rem;  /* mobile */
+    }
 }
 
 .home-image {
@@ -261,3 +271,4 @@ footer {
             height: 540px; 
             object-fit: cover;
         }
+
