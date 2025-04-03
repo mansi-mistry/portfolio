@@ -23,8 +23,6 @@ HEADER
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
 </head>
     
 <body>
@@ -153,27 +151,6 @@ FOOTER
 <footer>
   <p> Created by Mansi Mistry © 2025 - All rights reserved.</p>
 </footer>
-
-<script>
-    const correctPasswordHash = "76ea0bebb3c22822b4f0dd9c9fd021c5";
-
-            let userPassword = prompt("Enter the password to access this site:");
-
-            if (userPassword) {
-                let userPasswordHash = CryptoJS.MD5(userPassword).toString();
-                console.log("Entered Password Hash:", userPasswordHash); 
-                console.log("Expected Correct Hash:", correctPasswordHash);
-
-                if (userPasswordHash !== correctPasswordHash) {
-                    document.body.innerHTML = "<p>Access Denied</p>";
-                } else {
-                    console.log("Access Granted!"); // Debugging
-                }
-            } else {
-                document.body.innerHTML = "<p>Access Denied</p>";
-            }
-</script>
-
 
 </body>
 </html>
