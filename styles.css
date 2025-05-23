@@ -108,7 +108,7 @@ a:hover {
 body.home {
     background-image: url("img/background.jpeg"); 
     background-size: contain;     
-    background-position: center 960px;
+    background-position: center 860px;
     background-repeat: no-repeat;
 }
 
