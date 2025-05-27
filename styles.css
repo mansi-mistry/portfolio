@@ -217,6 +217,10 @@ body.home {
   transform: translateY(30px);
 }
 
+.card-caption {
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 600px) { /* mobile */
   .card {
     flex: 0 0 100%;
