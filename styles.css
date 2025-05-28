@@ -10,6 +10,10 @@ body {
     color: #2B2111;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 
 /******* navbar Styles *******/
 
@@ -209,26 +213,37 @@ body.home {
 .card img {
   width: 100%;
   border-radius: 15px;
-  display: block;
-}
-
-/* stragger */
-.card:nth-child(2) {
-  transform: translateY(30px);
 }
 
 .card-caption {
   margin-top: 0.5rem;
 }
 
+.card-wrapper {
+  flex: 0 0 30%;
+}
+
+/* stragger */
+.card-wrapper:nth-child(2) {
+  transform: translateY(30px);
+}
+
+
+
 @media (max-width: 600px) { /* mobile */
-  .card {
+  .card-wrapper {
     flex: 0 0 100%;
     margin: 0 auto 1.5rem;
   }
-  .card:nth-child(2) {
-    transform: none; /* specifically override the stagger */
+
+  .card-wrapper:nth-child(2) {
+    transform: none; /* remove stagger for mobile */
   }
+}
+
+#work {
+  position: relative;
+  scroll-margin-top: 70px;
 }
 
 
