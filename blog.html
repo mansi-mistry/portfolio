@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+
+HEADER
+
+--> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <title> Blog | Mansi's Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Italia header font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@200&display=swap" rel="stylesheet">
+    
+    <!-- Manrope body font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    
+</head>
+    
+<body>
+<!--
+
+NAVBAR
+
+--> 
+
+    <nav class="navbar">
+        <ul class="nav-left manrope">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#" onclick="unlockResume()">Resume</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <a href="index.html" class="nav-right manrope">Mansi<i>(mun•see)</i></a>
+    </nav>
+
+<!--
+
+BODY
+
+--> 
+    
+<section id="blog">
+    <!-- row 1 -->
+    <div class="row">
+        <div class="col-md-3 text-md-start"><br>
+            <h2>The Trip That Changed My Life: The Inka Trail</h2>
+            <p>August 2024</p>
+            <a href="blog1.html">Read More →</a>
+        </div>
+        <div class="col-md-9">
+            <img src="img/p1.jpg" class="img-fluid blog-image">
+        </div>
+    </div>
+
+    <!-- row 2 -->
+    <div class="row">
+        <div class="col-md-3 text-md-start"><br>
+            <h2>My First Solo Trip: Iceland</h2>
+            <p>October 2023</p>
+            <a href="blog2.html">Read More →</a>
+        </div>
+        <div class="col-md-9">
+            <img src="img/i1.jpg" class="img-fluid blog-image">
+        </div>
+    </div>
+
+    <!-- row 3 -->
+    <div class="row">
+        <div class="col-md-3 text-md-start"><br>
+            <h2>Coping during COVID: Baking</h2>
+            <p>Summer 2020</p>
+            <a href="blog3.html">Read More →</a>
+        </div>
+        <div class="col-md-9">
+            <img src="img/baking.jpg" class="img-fluid blog-image">
+        </div>
+    </div>
+</section>
+
+    
+<!--
+
+FOOTER
+
+-->
+    
+<footer>
+  <p class="footer-quote">
+    <em>Let's move mountains together. 🏔️</em>
+  </p>
+  <div class="footer-bottom">
+    <p class="footer-links">
+        <a href="mailto:mansimiistry@gmail.com">mansimiistry@gmail.com</a> |
+        <a href="https://www.linkedin.com/in/mansi-mistry02/" target="_blank">LinkedIn</a> |
+        <a href="#" onclick="unlockResume()">Resume</a>
+    </p>
+    <p>Created by Mansi Mistry © 2025 – All rights reserved.</p>
+  </div>
+</footer>
+
+    
+
+<script>
+  const correctPasswordHash = "76ea0bebb3c22822b4f0dd9c9fd021c5"; 
+
+  function unlockResume() {
+    const userPassword = prompt("Enter password to access the resume:");
+    if (userPassword) {
+      const userPasswordHash = CryptoJS.MD5(userPassword).toString();
+
+      if (userPasswordHash === correctPasswordHash) {
+        window.open("img/Mansi Mistry - Resume.pdf", "_blank");
+      } else {
+        alert("Incorrect password. Please try again.");
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
