@@ -1,0 +1,376 @@
+/******* global styles ********/
+
+body {
+    padding-top: 60px; 
+    font-family: "Manrope", sans-serif;
+    font-weight: 350; 
+    font-style: normal;
+    font-size: 14px;
+    background-color: #FFFFFF;
+    color: #2B2111;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/******* navbar Styles *******/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 10%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+    position: fixed;
+    flex-wrap: nowrap;
+    background-color: white;
+}
+
+.nav-left {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    margin-left: -40px;
+}
+
+.nav-left li {
+    margin-right: 20px;
+}
+
+.nav-left a {
+    color: #2B2111;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+
+/******* body styles *******/
+
+.content {
+    margin-top: 80px;
+    text-align: center;
+    padding: 50px 10%;
+}
+
+h1 {
+    font-family: "Italiana", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    color: #594B02;
+}
+
+h2 {
+    font-family: "Manrope", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 24px;
+    color: #2B2111;
+}
+
+.italiana-regular {
+    font-family: "Italiana", serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.manrope {
+    font-family: "Manrope", sans-serif;
+    font-size: 15px;
+    font-weight: 200;
+    font-style: normal;
+    color: #2B2111;
+}
+
+.nav-right {
+    color: black;
+    text-decoration: none;
+    font-weight: 700; 
+    color: #2B2111;
+    white-space: nowrap;
+}
+
+a {
+  color: #594B02; 
+  text-decoration: none; 
+}
+
+a:hover {
+  color: #2B2111; 
+  text-decoration: underline; 
+}
+
+
+/******* home page *******/
+
+body.home {
+    background-image: url("img/background.jpeg"); 
+    background-size: contain;     
+    background-position: center 250px;
+    background-repeat: no-repeat;
+}
+
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80vh;
+    padding: 0 10%;
+}
+
+.home-name {
+    font-family: "Italiana", serif;
+    text-decoration: inherit;
+    color: #2B2111;
+    margin-right: -30%; 
+    z-index: 2; 
+    white-space: nowrap;
+    position: absolute;
+    top:40%;
+}
+
+@media (min-width: 769px) {
+    .home-name {
+        font-size: 7rem; /* desktop */
+    }
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+  .home-name {
+    font-size: 4rem; 
+    margin-top: 30px; 
+  }
+}
+
+@media (max-width: 600px) {
+    .home-name {
+        margin-top: 50px;
+        font-size: 2.5rem;  /* mobile */
+    }
+}
+
+.home-image {
+    width: 50vw;
+    height: auto;
+    max-width: 100%;
+}
+
+.overlap-text {
+    color: floralwhite;
+}
+
+.intro-text {
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+  animation-delay: 0.5s; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/******* project slide *******/
+
+.slider-section {
+  padding: 120px 10%;
+  background-color: #FBF9F4;
+  margin-top: 70px;
+}
+
+.cards-heading {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+/* Grid layout */
+.slides {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 80px 60px; /* vertical | horizontal spacing */
+}
+
+/* Individual project card */
+.slide {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image */
+.slide img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 0.5px solid #2B2111;
+  margin-bottom: 25px;
+}
+
+/* Title */
+.slide h3 {
+  font-family: "Manrope", serif;
+  font-size: 1rem;
+  font-weight: 100;
+  color: #594B02;
+  margin-bottom: 15px;
+}
+
+/* Description */
+.slide p {
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 15px;
+  max-width: 520px;
+}
+
+
+@media (max-width: 768px) {
+  .slides {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .slide img {
+    height: 320px;
+  }
+
+  .cards-heading {
+    margin-bottom: 50px;
+  }
+}
+
+
+/******* about section *******/
+
+.grid-section {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+/* projects */
+
+.projects {
+  margin-top: 80px; 
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+
+.projects img {
+  border: 0.5px solid #000000;
+  border-radius: 20px;
+}
+
+
+/******* testimonials *******/
+
+.testimonials-heading {
+    text-align: center;  
+    margin-bottom: 55px; 
+}
+
+#testimonials {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 100px;
+}
+
+.testimonial {
+    width: 100%;  
+    height: 325px;
+    background: #2B2111;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: floralwhite;
+    padding: 20px;
+    margin-bottom: 20px;
+    flex-direction: column; 
+    justify-content: flex-start; 
+}
+
+.testimonial p {
+    margin-top: 10px; 
+}
+
+.testimonial:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .testimonial {
+        height: auto; 
+        padding: 40px;
+        margin-bottom: 30px; 
+        margin-bottom: 30px; 
+    }
+}
+
+
+/******* footer *******/
+
+footer {
+  padding: 40px 10%;
+  background-color: #2B2111;
+  color: floralwhite;
+  margin-top: 50px;
+}
+
+.footer-links a {
+  margin: 0 6px;
+  color: floralwhite;
+}
+
+.footer-links a:first-child {
+  margin-left: 0;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+/******* blog *******/
+
+#blog {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 80px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.blog-image {
+    border-radius: 20px; 
+    border: 0.5px solid #2B2111;
+    margin-top: 20px;
+}
+
+.baking-image {
+            border-radius: 10px; 
+            border: 0.5px solid #2B2111;
+            margin-top: 20px;
+            width: 100%;
+            height: 540px; 
+            object-fit: cover;
+        }
