@@ -351,6 +351,10 @@ footer {
   flex-wrap: wrap;
 }
 
+footer p {
+  margin: 10px 0;
+}
+
 /******* photography images *******/
 .photo-img {
   border: 0.5px solid #2B2111;
