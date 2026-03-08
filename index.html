@@ -10,8 +10,8 @@ HEADER
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico">
     <title> Home | Mansi's Portfolio</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
 
     <!-- Italia header font -->
@@ -23,10 +23,20 @@ HEADER
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-
+<script>
+  AOS.init({
+    duration: 800,
+    easing: "ease-out",
+    once: true
+  });
+</script>
+    
 </head>
+
     
 <body class="home">
 
@@ -65,7 +75,7 @@ ABOUT
 
 --> 
     
-<section id="about">
+<section id="about" data-aos="fade-up">
     <div class="grid-section">
     <div>
         <h1></h1>
@@ -99,7 +109,7 @@ PROJECT SLIDER
 -->
     
 
-<section id="work" class="slider-section">
+<section id="work" class="slider-section" data-aos="fade-up">
 <h1 class="cards-heading">Design Work</h1>
   <div class="slider">
 
@@ -148,7 +158,7 @@ TESTIMONIALS
 
 -->
     
-<section id="testimonials">
+<section id="testimonials" data-aos="fade-up">
     <h1 class="testimonials-heading">What People Say</h1> 
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3">
@@ -194,8 +204,14 @@ FOOTER
   </div>
 </footer>
 
-    
 
+<script>
+  AOS.init({
+    duration: 800,
+    easing: "ease-out",
+    once: true
+  });
+</script>
  
 </body>
 </html>
