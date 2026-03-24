@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <title>HealthTech Form Migration AI Tool | Mansi's Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <style>
+        /* ── Page-level overrides. yes ik bad ── */
+        body {
+            background-color: #FFFFFF;
+        }
+
+        /* ── Hero ── */
+        .case-hero {
+            padding: 100px 10% 60px;
+            border-bottom: 0.5px solid #e5e0d6;
+        }
+
+        .case-hero h1 {
+            font-size: 2.6rem;
+            margin-bottom: 8px;
+        }
+
+        .case-hero .subtitle {
+            font-family: "Manrope", sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            color: #594B02;
+            letter-spacing: 0.04em;
+            margin-bottom: 20px;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .tag {
+            background: #F5F0E8;
+            color: #594B02;
+            border: 0.5px solid #d4c9a8;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-family: "Manrope", sans-serif;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .demo-link-btn {
+            display: inline-block;
+            background: #2B2111;
+            color: floralwhite !important;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none !important;
+            margin-right: 12px;
+            transition: opacity 0.2s;
+        }
+
+        .demo-link-btn:hover {
+            opacity: 0.8;
+            text-decoration: none !important;
+        }
+
+        .demo-note {
+            font-size: 12.5px;
+            color: #888;
+            margin-top: 12px;
+            max-width: 560px;
+            line-height: 1.6;
+        }
+
+        /* ── Section scaffolding ── */
+        .cs-section {
+            padding: 80px 10%;
+            border-bottom: 0.5px solid #e5e0d6;
+        }
+
+        .cs-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .cs-section h2 {
+            font-size: 22px;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .cs-section p {
+            font-size: 14.5px;
+            line-height: 1.85;
+            margin-bottom: 16px;
+            max-width: 640px;
+        }
+
+        /* ── Meta bar ── */
+        .meta-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-top: 10px;
+            margin-bottom: 28px;
+        }
+
+        .meta-item strong {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #594B02;
+            margin-bottom: 4px;
+        }
+
+        .meta-item span {
+            font-size: 13.5px;
+            color: #2B2111;
+        }
+
+        /* ── Images ── */
+        .hero-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 0.5px solid #d4c9a8;
+            display: block;
+        }
+
+        .screenshot-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 0.5px solid #d4c9a8;
+            display: block;
+        }
+
+        .screenshot-img-auto {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 0.5px solid #d4c9a8;
+            display: block;
+        }
+
+        .feature-screenshot img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 0.5px solid #d4c9a8;
+            display: block;
+        }
+
+        /* ── Panel cards (solution) ── */
+        .panel-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .panel-card {
+            background: #F5F0E8;
+            border: 0.5px solid #d4c9a8;
+            border-radius: 12px;
+            padding: 28px 24px;
+        }
+
+        .panel-card .panel-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #594B02;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .panel-card h3 {
+            font-family: "Italiana", serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: #2B2111;
+            margin-bottom: 10px;
+        }
+
+        .panel-card p {
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: #4a3f2a;
+            margin: 0;
+            max-width: none;
+        }
+
+        @media (max-width: 768px) {
+            .panel-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Extraction table ── */
+        .extraction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 28px;
+            font-size: 13.5px;
+        }
+
+        .extraction-table thead th {
+            text-align: left;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #594B02;
+            padding: 10px 16px;
+            border-bottom: 1px solid #d4c9a8;
+        }
+
+        .extraction-table tbody td {
+            padding: 14px 16px;
+            border-bottom: 0.5px solid #ede8de;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .extraction-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .lib-badge {
+            color: #594B02;
+            font-weight: 600;
+            font-family: "Courier New", monospace;
+            font-size: 13px;
+        }
+
+        /* ── How it works flow ── */
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 32px;
+            max-width: 560px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .flow-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 32px;
+            flex-shrink: 0;
+        }
+
+        .flow-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #594B02;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .flow-line {
+            width: 1px;
+            height: 40px;
+            background: #d4c9a8;
+            margin: 4px 0;
+        }
+
+        .flow-text {
+            font-size: 14px;
+            line-height: 1.6;
+            padding-bottom: 28px;
+        }
+
+        .flow-text strong {
+            display: block;
+            color: #2B2111;
+            margin-bottom: 2px;
+        }
+
+        .flow-text span {
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* ── Features screenshots grid ── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .feature-screenshot {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .feature-caption {
+            font-size: 12.5px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Comparison table ── */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 28px;
+            font-size: 13.5px;
+        }
+
+        .comparison-table thead th {
+            padding: 14px 20px;
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #594B02;
+            border-bottom: 1px solid #d4c9a8;
+            font-weight: 600;
+        }
+
+        .comparison-table thead th:nth-child(2) {
+            color: #888;
+        }
+
+        .comparison-table thead th:nth-child(3) {
+            color: #2B2111;
+        }
+
+        .comparison-table tbody td {
+            padding: 16px 20px;
+            border-bottom: 0.5px solid #ede8de;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comp-bad {
+            color: #b85c3a;
+        }
+
+        .comp-good {
+            color: #3a7a5c;
+            font-weight: 500;
+        }
+
+        .comparison-note {
+            font-size: 13px;
+            color: #555;
+            font-style: italic;
+            margin-top: 16px;
+            line-height: 1.7;
+            border-left: 3px solid #d4c9a8;
+            padding-left: 16px;
+            max-width: 600px;
+        }
+
+        /* ── Impact metrics ── */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .impact-metric {
+            background: #2B2111;
+            color: floralwhite;
+            border-radius: 12px;
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .impact-metric .metric-value {
+            font-family: "Italiana", serif;
+            font-size: 2.4rem;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 8px;
+            color: #f5e9c8;
+        }
+
+        .impact-metric .metric-label {
+            font-size: 12px;
+            font-weight: 300;
+            opacity: 0.75;
+            line-height: 1.5;
+        }
+
+        .impact-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 32px;
+            font-size: 13.5px;
+        }
+
+        .impact-table thead th {
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #594B02;
+            padding: 10px 16px;
+            border-bottom: 1px solid #d4c9a8;
+            font-weight: 600;
+        }
+
+        .impact-table tbody td {
+            padding: 14px 16px;
+            border-bottom: 0.5px solid #ede8de;
+            line-height: 1.6;
+        }
+
+        .impact-table tbody td:last-child {
+            font-weight: 500;
+            color: #2B2111;
+        }
+
+        .impact-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .impact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Tech stack chips ── */
+        .stack-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .stack-chip {
+            background: #F5F0E8;
+            border: 0.5px solid #d4c9a8;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-family: "Courier New", monospace;
+            color: #2B2111;
+        }
+
+        /* ── File tree ── */
+        .file-tree {
+            background: #1e1a14;
+            color: #d4c9a8;
+            border-radius: 12px;
+            padding: 28px 32px;
+            font-family: "Courier New", monospace;
+            font-size: 13px;
+            line-height: 2;
+            margin-top: 24px;
+            overflow-x: auto;
+        }
+
+        .file-tree .dir { color: #f5e9c8; }
+        .file-tree .file { color: #a8c4a0; }
+        .file-tree .comment { color: #6a6050; }
+
+        /* ── Dev challenges ── */
+        .challenge-item {
+            border-left: 3px solid #d4c9a8;
+            padding-left: 20px;
+            margin-bottom: 36px;
+        }
+
+        .challenge-item h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2B2111;
+            margin-bottom: 8px;
+        }
+
+        .challenge-item p {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #1e1a14;
+            color: #a8c4a0;
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-family: "Courier New", monospace;
+            font-size: 12.5px;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        /* ── What's next ── */
+        .next-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .next-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 0.5px solid #ede8de;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .next-list li:last-child {
+            border-bottom: none;
+        }
+
+        .next-list li::before {
+            content: "→";
+            color: #594B02;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ── Reflection ── */
+        .reflection-block {
+            background: #F5F0E8;
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 720px;
+        }
+
+        .reflection-block p {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #2B2111;
+            max-width: none;
+        }
+
+        .reflection-block .reflection-accent {
+            font-family: "Italiana", serif;
+            font-size: 1.1rem;
+            color: #594B02;
+            display: block;
+            margin-top: 20px;
+        }
+
+        /* ── Design section ── */
+        .cs-section.alt-bg {
+            background-color: #FBF9F4;
+        }
+
+        /* ── Image caption ── */
+        .img-caption {
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .case-hero {
+                padding: 80px 6% 48px;
+            }
+
+            .cs-section {
+                padding: 60px 6%;
+            }
+
+            .case-hero h1 {
+                font-size: 1.8rem;
+            }
+
+
+
+            .reflection-block {
+                padding: 32px 24px;
+            }
+
+            .file-tree {
+                font-size: 11px;
+                padding: 20px;
+            }
+
+            .meta-bar {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .case-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tag {
+                font-size: 11px;
+                padding: 3px 10px;
+            }
+
+
+        }
+
+        /* AOS override */
+        [data-aos] { pointer-events: none; }
+        [data-aos].aos-animate { pointer-events: auto; }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <ul class="nav-left manrope">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="photography.html">Photography</a></li>
+    </ul>
+    <a href="index.html" class="nav-right manrope">Mansi<i>(mun•see)</i></a>
+</nav>
+
+
+<!--
+
+HERO
+
+-->
+<div class="case-hero" data-aos="fade-up" data-aos-duration="800">
+    <p class="subtitle">BoomerangFX · Internal Productivity Tool · March 2026</p>
+    <h1>HealthTech Form<br>Migration AI Tool</h1>
+
+    <div class="tag-row">
+        <span class="tag">HealthTech SaaS</span>
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">UX Design</span>
+        <span class="tag">Data Migration</span>
+        <span class="tag">React</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Figma Make</span>
+        <span class="tag">Anthropic Claude</span>
+        <span class="tag">Process Automation</span>
+    </div>
+
+    <a href="https://loud-person-13378220.figma.site/" target="_blank" class="demo-link-btn">Live Demo ↗</a>
+
+    <p class="demo-note">
+        <strong>Note:</strong> The linked prototype demonstrates the UI and user flow. The full AI integration — PDF extraction, Claude API streaming, and live JSON generation — runs locally and requires an Anthropic API key.
+    </p>
+</div>
+
+
+<!-- Hero image -->
+<div class="cs-section" style="padding-top: 60px; padding-bottom: 60px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+    <img src="img/form/hero.png" class="hero-img" alt="BoomerangFX Form Builder hero">
+</div>
+
+
+<!--
+
+OVERVIEW
+
+-->
+<div class="cs-section alt-bg" data-aos="fade-up" data-aos-duration="700">
+    <div class="row align-items-start">
+        <div class="col-md-5" data-aos="fade-up" data-aos-duration="700">
+            <h2>Overview</h2>
+            <p>
+                I developed an AI-driven form migration dashboard that <strong>reduces clinic form onboarding time by 90%</strong> — combining Claude's language model with a custom-built React interface that lets implementation specialists audit every AI-generated field before export.
+            </p>
+            <div class="meta-bar">
+                <div class="meta-item">
+                    <strong>Tools</strong>
+                    <span>React · TypeScript · Tailwind CSS · Vite · Anthropic API · pdfjs-dist · mammoth.js · Figma Make</span>
+                </div>
+            </div>
+            <div class="meta-bar">
+                <div class="meta-item">
+                    <strong>Role</strong>
+                    <span>Product Designer + Developer</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Timeline</strong>
+                    <span>2 days</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 mt-4 mt-md-0" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+            <img src="img/form/form.png" class="screenshot-img" alt="Form builder UI overview">
+        </div>
+    </div>
+</div>
+
+
+<!--
+
+PROBLEM
+
+-->
+<div class="cs-section" data-aos="fade-up" data-aos-duration="700">
+    <div class="row align-items-start">
+        <div class="col-md-5" data-aos="fade-up" data-aos-duration="700">
+            <h2>The Problem</h2>
+            <p>
+                One of the many tasks of the Data Migration team at BoomerangFX is to transfer clinical forms from clients' old practice management software into BoomerangFX. It's a <strong>tedious process</strong> involving manually inputting every text field, checkbox, signature line, and consent paragraph inside BoomerangFX's <a href="https://form.io" target="_blank">forms.io</a> builder — a form-rendering platform used across the patient management system.
+            </p>
+            <p>
+                Using ChatGPT to convert forms to JSON yielded ~okay~ results. Oftentimes, a lot of text and input fields were skipped, or it wouldn't handle forms more than 1 page long, leading to missing information. This could be <strong>very dangerous for surgical consent or pre- and post-procedure forms!</strong>
+            </p>
+            <p>
+                This process wasn't just inconvenient — it's a liability.
+            </p>
+        </div>
+        <div class="col-md-7 mt-4 mt-md-0" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+            <img src="img/form/old.png" class="screenshot-img" alt="Current tool screenshot">
+            <p class="img-caption">Current Tool</p>
+        </div>
+    </div>
+</div>
+
+
+<!--
+
+ROLE
+
+-->
+<div class="cs-section alt-bg" data-aos="fade-up" data-aos-duration="700">
+    <div class="col-md-7 p-0">
+        <h2>My Role</h2>
+        <p>
+            I identified the problem, designed the solution, and built it. Working within Figma Design for UI design, then Figma Make for the initial prototype, and extending the codebase in TypeScript — I owned the full product lifecycle: problem framing, UX design, AI integration, and deployment.
+        </p>
+        <div class="tag-row" style="margin-top: 20px;">
+            <span class="tag">Problem Framing</span>
+            <span class="tag">UX Design</span>
+            <span class="tag">AI Integration</span>
+            <span class="tag">Deployment</span>
+        </div>
+    </div>
+</div>
+
+
+<!--
+
+SOLUTIONS
+
+-->
+<div class="cs-section" data-aos="fade-up" data-aos-duration="700">
+    <h2>My Solution</h2>
+    <p style="max-width: 600px;">A three-panel web application that replaces the manual process entirely:</p>
+
+    <div class="panel-cards" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+        <div class="panel-card">
+            <div class="panel-label">Left Panel</div>
+            <h3>Upload</h3>
+            <p>Drag and drop any client form. Accepts PDFs, Word documents (.docx), and scanned images (PNG/JPG/WEBP). Each file type is processed through a dedicated extraction pipeline.</p>
+        </div>
+        <div class="panel-card">
+            <div class="panel-label">Middle Panel</div>
+            <h3>Audit</h3>
+            <p>A <strong>live form preview</strong> renders every field, checkbox, radio button, and signature line so the specialist can visually verify output before touching any JSON. This is the human-in-the-loop checkpoint that <strong>solves the AI hallucination problem.</strong></p>
+        </div>
+        <div class="panel-card">
+            <div class="panel-label">Right Panel</div>
+            <h3>Output</h3>
+            <p>The raw Form.io JSON streams in real-time as Claude generates it. Copy or download with one click.</p>
+        </div>
+    </div>
+
+    <!-- Extraction types table -->
+    <div class="mt-5" data-aos="fade-up" data-aos-duration="700" data-aos-delay="150">
+        <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #594B02; margin-bottom: 0;">Extraction Types</p>
+        <table class="extraction-table">
+            <thead>
+                <tr>
+                    <th>File Type</th>
+                    <th>Library</th>
+                    <th>Method</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PDF</td>
+                    <td><span class="lib-badge">pdfjs-dist</span></td>
+                    <td>Full text extraction page by page</td>
+                </tr>
+                <tr>
+                    <td>Word (.docx)</td>
+                    <td><span class="lib-badge">mammoth</span></td>
+                    <td>Raw text extraction from XML</td>
+                </tr>
+                <tr>
+                    <td>Images (PNG/JPG)</td>
+                    <td><span class="lib-badge">FileReader API</span></td>
+                    <td>Base64 DataURL → Claude Vision</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Solution screenshot -->
+    <div class="mt-5" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
+        <img src="img/form/updatedUI.png" class="screenshot-img" alt="Updated UI screenshot">
+    </div>
+</div>
+
+
+<!--
+
+HOW IT WORKS
+
+-->
+<div class="cs-section alt-bg" data-aos="fade-up" data-aos-duration="700">
+    <h2>How It Works</h2>
+
+    <div class="flow-steps" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+        <div class="flow-step">
+            <div class="flow-connector">
+                <div class="flow-dot"></div>
+                <div class="flow-line"></div>
+            </div>
+            <div class="flow-text">
+                <strong>Client sends PDF / Word doc / Image</strong>
+                <span>Any file type dropped into the upload panel</span>
+            </div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-connector">
+                <div class="flow-dot"></div>
+                <div class="flow-line"></div>
+            </div>
+            <div class="flow-text">
+                <strong>Tool extracts text</strong>
+                <span>pdfjs-dist / mammoth / FileReader — each routed to the correct library</span>
+            </div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-connector">
+                <div class="flow-dot"></div>
+                <div class="flow-line"></div>
+            </div>
+            <div class="flow-text">
+                <strong>Claude generates Form.io JSON</strong>
+                <span>Strict schema prompt ensures every field is captured verbatim</span>
+            </div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-connector">
+                <div class="flow-dot"></div>
+            </div>
+            <div class="flow-text">
+                <strong>Specialist audits live preview → exports JSON</strong>
+                <span>Human checkpoint before anything lands in production</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--
+
+FEATURES
+
+-->
+<div class="cs-section" data-aos="fade-up" data-aos-duration="700">
+    <h2>Features</h2>
+
+    <!-- Main features screenshot — closing div fixed -->
+    <div data-aos="fade-up" data-aos-duration="700" data-aos-delay="80">
+        <img src="img/form/features.png" class="screenshot-img" alt="Features overview">
+    </div>
+
+    <!-- Feature screenshots grid -->
+    <div class="features-grid mt-5">
+        <div class="feature-screenshot" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+            <img src="img/form/api.jpeg" alt="API key prompt">
+            <p class="feature-caption"><strong>Anthropic Key Prompt</strong> — Your key is stored only in the browser session and never sent anywhere except Anthropic's API directly. Cleared when you close the tab.</p>
+        </div>
+        <div class="feature-screenshot" data-aos="fade-up" data-aos-duration="700" data-aos-delay="160">
+            <img src="img/form/save.jpeg" alt="Save to library">
+            <p class="feature-caption"><strong>Save to Library</strong> — File common clinic structures (e.g. "Intake Form," "Consent Form") to auto-map fields on future uploads.</p>
+        </div>
+        <div class="feature-screenshot" data-aos="fade-up" data-aos-duration="700" data-aos-delay="220">
+            <img src="img/form/remove.jpeg" alt="Template library">
+            <p class="feature-caption"><strong>Template Library</strong> — Manage saved forms by category. Remove outdated templates with a single click.</p>
+        </div>
+    </div>
+</div>
+
+
+<!--
+
+DESIGN
+
+-->
+<div class="cs-section alt-bg" data-aos="fade-up" data-aos-duration="700">
+    <h2>BoomerangFX Design</h2>
+    <p>Design brainstormed and prototyped in Figma Design before extending the codebase — covering branding, colour palette, component layouts, and the three-panel architecture.</p>
+    <div class="mt-4" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+        <img src="img/form/inspo.png" class="screenshot-img" alt="Figma design brainstorm">
+        <p class="img-caption">Design brainstorm on Figma Design</p>
+    </div>
+</div>
+
+
+<!--
+
+WHY CLAUDE
+
+-->
+<div class="cs-section" data-aos="fade-up" data-aos-duration="700">
+    <h2>Why Claude Over ChatGPT?</h2>
+
+    <table class="comparison-table" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+        <thead>
+            <tr>
+                <th style="width: 35%;">Criteria</th>
+                <th>ChatGPT (GPT-4o)</th>
+                <th>Claude Sonnet</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Forms longer than 1 page</td>
+                <td class="comp-bad">Truncates</td>
+                <td class="comp-good">Handles fully (8+ pages)</td>
+            </tr>
+            <tr>
+                <td>Medical text accuracy</td>
+                <td class="comp-bad">Paraphrases</td>
+                <td class="comp-good">Reproduces verbatim</td>
+            </tr>
+            <tr>
+                <td>Scanned image forms</td>
+                <td class="comp-bad">Limited</td>
+                <td class="comp-good">Native vision support</td>
+            </tr>
+            <tr>
+                <td>Cost per generation</td>
+                <td>~$0.08</td>
+                <td>~$0.10</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="comparison-note mt-4">
+        For legal consent forms, paraphrasing is not acceptable. Claude was the only model that passed the accuracy test on real client documents.
+    </p>
+</div>
+
+
+<!--
+
+IMPACT
+
+-->
+<div class="cs-section alt-bg" data-aos="fade-up" data-aos-duration="700">
+    <h2>Impact</h2>
+
+    <div class="impact-grid" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+        <div class="impact-metric">
+            <div class="metric-value">90%</div>
+            <div class="metric-label">Reduction in migration time</div>
+        </div>
+        <div class="impact-metric">
+            <div class="metric-value">8</div>
+            <div class="metric-label">Maximum form pages handled</div>
+        </div>
+        <div class="impact-metric">
+            <div class="metric-value">12</div>
+            <div class="metric-label">Form.io component types auto-detected</div>
+        </div>
+        <div class="impact-metric">
+            <div class="metric-value">3</div>
+            <div class="metric-label">File types supported</div>
+        </div>
+        <div class="impact-metric">
+            <div class="metric-value">100%</div>
+            <div class="metric-label">Schema accuracy (human-verified)</div>
+        </div>
+    </div>
+
+    <table class="impact-table mt-5" data-aos="fade-up" data-aos-duration="700" data-aos-delay="150">
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Migration time reduction</td>
+                <td>90%</td>
+            </tr>
+            <tr>
+                <td>Maximum form length handled</td>
+                <td>8 pages</td>
+            </tr>
+            <tr>
+                <td>File types supported</td>
+                <td>PDF, Word, PNG, JPG</td>
+            </tr>
+            <tr>
+                <td>Form.io component types auto-detected</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Schema accuracy (human-verified)</td>
+                <td>100%</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--
+
+STACK
+
+-->
+<div class="cs-section" data-aos="fade-up" data-aos-duration="700">
+    <h2>Technical Stack</h2>
+
+    <div class="stack-chips" data-aos="fade-up" data-aos-duration="700" data-aos-delay="80">
+        <span class="stack-chip">React</span>
+        <span class="stack-chip">TypeScript</span>
+        <span class="stack-chip">Tailwind CSS</span>
+        <span class="stack-chip">Vite</span>
+        <span class="stack-chip">Anthropic API</span>
+        <span class="stack-chip">Claude Sonnet</span>
+        <span class="stack-chip">pdfjs-dist</span>
+        <span class="stack-chip">mammoth.js</span>
+        <span class="stack-chip">Figma Make</span>
+    </div>
+
+    <div class="file-tree mt-4" data-aos="fade-up" data-aos-duration="700" data-aos-delay="140">
+<span class="dir">src/</span>
+├── <span class="dir">components/</span>
+│   ├── <span class="file">Header.tsx</span>         <span class="comment"># BoomerangFX branding bar</span>
+│   ├── <span class="file">LeftPanel.tsx</span>      <span class="comment"># File upload + library</span>
+│   ├── <span class="file">MiddlePanel.tsx</span>    <span class="comment"># Live form preview renderer</span>
+│   ├── <span class="file">RightPanel.tsx</span>     <span class="comment"># JSON output with syntax highlighting</span>
+│   └── <span class="file">ApiKeyModal.tsx</span>    <span class="comment"># Secure API key entry</span>
+├── <span class="dir">utils/</span>
+│   ├── <span class="file">claudeService.ts</span>   <span class="comment"># Anthropic API integration + streaming</span>
+│   └── <span class="file">fileExtraction.ts</span>  <span class="comment"># PDF / DOCX / image content extraction</span>
+└── <span class="file">App.tsx</span>                <span class="comment"># State management</span>
+    </div>
+</div>
+
+
+<!--
+
+CHALLENGES
+
+-->
+<div class="cs-section alt-bg" data-aos="fade-up" data-aos-duration="700">
+    <h2>Development Challenges</h2>
+
+    <div class="challenge-item mt-4" data-aos="fade-up" data-aos-duration="700" data-aos-delay="80">
+        <h4>Node.js binary incompatibility on macOS</h4>
+        <p>The system Node binary was compiled for macOS 13.5 (Ventura) but running on an older OS version, causing a C++ standard library crash on every npm command.</p>
+        <p><strong>Fix:</strong> Installed nvm (Node Version Manager) to manage Node versions independently of the system:</p>
+        <div class="code-block">
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash<br>
+source ~/.zshrc<br>
+nvm install 18<br>
+nvm use --delete-prefix v18.20.8
+        </div>
+    </div>
+
+    <div class="challenge-item" data-aos="fade-up" data-aos-duration="700" data-aos-delay="120">
+        <h4>Static mockup vs. real AI output</h4>
+        <p>Figma Make's generated prototype rendered a hardcoded form card regardless of what file was uploaded.</p>
+        <p><strong>Fix:</strong> Rewired the entire data flow in App.tsx to call the Claude API on file selection, stream the response live into the right panel, and feed the parsed JSON into a custom recursive Form.io renderer.</p>
+        <div class="code-block">
+1. Install PDF parsing library to read actual files<br>
+2. Extract text and field information from the PDFs<br>
+3. Map extracted content to the correct forms.io JSON structure
+        </div>
+    </div>
+
+    <div class="challenge-item" data-aos="fade-up" data-aos-duration="700" data-aos-delay="160">
+        <h4>Multi-file-type extraction</h4>
+        <p>PDFs, Word docs, and images each require a completely different extraction strategy. Built a unified <code>fileExtraction.ts</code> utility that routes each file type to the correct library and returns a consistent result object.</p>
+        <div class="code-block">
+PDF      → pdfjs-dist       (reliable text extraction)<br>
+Images   → Claude Vision    (base64 DataURL → vision API)<br>
+Word     → mammoth.js       (converts .docx to HTML/text)
+        </div>
+    </div>
+</div>
+
+
+<!--
+
+NEXT STEPS
+
+-->
+<div class="cs-section" data-aos="fade-up" data-aos-duration="700">
+    <h2>What's Next</h2>
+    <ul class="next-list" data-aos="fade-up" data-aos-duration="700" data-aos-delay="80">
+        <li>Batch processing for multiple forms in one session</li>
+        <li>GPT-4o toggle as a fallback model</li>
+        <li>Direct export to BoomerangFX via API (eliminating copy-paste entirely)</li>
+        <li>Form diff view to compare a regenerated form against a previous version</li>
+    </ul>
+</div>
+
+
+<!--
+
+REFLECTION
+
+-->
+<div class="cs-section alt-bg" data-aos="fade-up" data-aos-duration="700">
+    <h2>Reflection</h2>
+    <div class="reflection-block" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+        <p>
+            This project sits at the intersection of where I want to work: meaningful work and a UI that brings a solution to life. 
+        </p>
+        <p>
+            I'm happy to have improved work processes of the data migration team so early at my tenure at BoomerangFX, and I look forward to using my skills in design and engineering to create even better experiences.
+        </p>
+    </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+    <p class="footer-quote">
+        <em>Let's move mountains together. 🏔️</em>
+    </p>
+    <div class="footer-bottom">
+        <p class="footer-links">
+            <a href="https://www.linkedin.com/in/mansi-mistry02/" target="_blank">LinkedIn</a>
+        </p>
+        <p>Created by Mansi Mistry © 2025 – All rights reserved.</p>
+    </div>
+</footer>
+
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        once: true,
+        offset: 60,
+        easing: 'ease-out-quad'
+    });
+</script>
+
+</body>
+</html>
